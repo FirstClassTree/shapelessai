@@ -1,0 +1,10 @@
+{
+  "name": "shapeless",
+  "description": "Drive a Shapeless account: jobs, posts, agents, Brand Memory - as MCP tools plus a skill that knows the ropes.",
+  "version": "0.1.0",
+  "author": { "name": "Shapeless AI", "url": "https://shapelessai.com" },
+  "homepage": "https://shapelessai.com",
+  "repository": "https://github.com/FirstClassTree/shapelessai",
+  "license": "MIT",
+  "mcpServers": "./.mcp.json"
+}

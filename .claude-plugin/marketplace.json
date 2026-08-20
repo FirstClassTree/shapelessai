@@ -1,0 +1,12 @@
+{
+  "name": "shapeless",
+  "description": "Shapeless runs your social presence; this marketplace connects your agents to it.",
+  "owner": { "name": "Shapeless AI", "url": "https://shapelessai.com" },
+  "plugins": [
+    {
+      "name": "shapeless",
+      "source": "./plugins/shapeless",
+      "description": "Drive a Shapeless account: jobs, posts, agents, Brand Memory - as MCP tools plus a skill that knows the ropes."
+    }
+  ]
+}
