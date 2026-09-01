@@ -22,6 +22,11 @@ needs a key: minted at https://shapelessai.com/studio/settings (Settings -> API 
   the transcript and outputs; `jobs_continue` resumes a stuck or finished run with new
   instructions. Prefer a job for anything generative - the server holds the account's Brand
   Memory, connected platforms, and media pipeline.
+- **Files ride the message**: `jobs_create` and `jobs_continue` take `files` (absolute local
+  paths - `.md`/`.txt` inline, images, video, audio and PDF upload on the way) and `mediaKeys`
+  (anything already in the account, such as what `assets_upload` returned). Up to 6 per message.
+  The agent reads them for real - an image's pixels, not just its filename - and the human sees
+  the file in the studio transcript. Hand over the file rather than describing it.
 - **Posts** are the queue: proposed -> scheduled -> published. `posts_list` / `posts_get` to
   review, `posts_approve` to accept a proposal into the schedule, `posts_dismiss` to reject,
   `posts_publish` to put one out now.
@@ -40,6 +45,8 @@ needs a key: minted at https://shapelessai.com/studio/settings (Settings -> API 
   blind.
 - Generative quality issues (wrong tone, wrong facts) are Brand Memory issues - offer to fix the
   source, not just the symptom.
+- `assets_upload` puts a file in the brand library for reuse; attaching it to a message is what
+  makes this turn's agent look at it. They are different asks - do the one you were asked for.
 - The API is rate-limited at 600 requests/hour per key; poll jobs with restraint.
 
 The full contract (routes, scopes, refusal codes) lives in the repo's `docs/api-for-agents.md`.

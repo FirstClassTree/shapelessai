@@ -48,9 +48,14 @@ shapeless jobs create draft three posts about our beta launch
 shapeless jobs create plan this week --label "Weekly plan" --budget 2.50 --watch
 
 # Come back later
-shapeless jobs list
+shapeless jobs list               # 200 newest; prints a cursor if older jobs exist
+shapeless jobs list --before <cursor>   # the next page back
 shapeless jobs show <id>          # transcript summary + outputs
 shapeless jobs tail <id>          # re-attach to the live stream
+
+# Put files on the message - the agent sees the image, not just its name
+shapeless jobs create does this thumbnail work? --attach ./thumb.png --attach ./notes.md
+shapeless jobs continue <id> and this one --media-key workspace-assets/<account>/logo.png
 
 # Resume a stuck or failed run - history is rebuilt server-side
 shapeless jobs continue <id> keep going, but make the second post shorter --watch
@@ -94,6 +99,31 @@ shapeless connections
 (`jobs_create`, `posts_approve`, `brain_write`, ...). Each tool's description
 names the scope its key needs; tools that publish content say so plainly, so a
 host can gate them.
+
+A job is a conversation, so work passes both ways between your terminal and the
+web app:
+
+- Every job result carries a **`url`** - `https://shapelessai.com/studio/c/<id>` -
+  so an agent can hand the human back a link to what it just did.
+- **`jobs_brief <id>`** is the cheap read before replying: the last 30 messages
+  clipped, reasoning and tool-activity dropped, an artifact inventory and post
+  counts per queue status. Deterministic, no model in the loop. `jobs_get` still
+  gives the full transcript.
+- **`jobs_list`** answers 200 jobs at a time, newest first, with a `nextCursor`;
+  pass it back as `before` to walk further into the history.
+- **`jobs_tail <id>`** watches a job's run (60 seconds max, 200 events) and
+  returns the events plus a cursor to resume from; a job with no run stream to
+  attach to answers `{live: false}` instead of erroring.
+- **`jobs_create` and `jobs_continue` take files**: `files` (absolute local
+  paths - `.md`/`.txt` ride inline, images, video, audio and PDF are uploaded
+  here) and `mediaKeys` (anything already in the account, e.g. what
+  `assets_upload` returned). Up to 6 per message. They land on the message the
+  human sees in the studio, and the agent reads them for real - an image's
+  pixels are inlined for that turn, not just its filename.
+
+There is one prompt, **`continue`** (argument: `id`), which Claude Code surfaces
+as a slash command: it loads that conversation's brief and tells the agent to
+reply into the same thread with `jobs_continue`.
 
 Claude Code:
 

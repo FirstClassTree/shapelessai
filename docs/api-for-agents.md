@@ -1,8 +1,9 @@
 # API for agents
 
 The studio in a browser rides a signed session cookie. An agent outside that browser - a script,
-the coming CLI, Claude Code - rides an **API key**: the same account, the same routes, a second
-credential. This file is the contract the CLI is built against.
+the CLI, Claude Code - rides an **API key**: the same account, the same routes, a second
+credential. This file is the contract the CLI is built against. It mirrors the copy that lives
+beside the app itself; the two are kept identical.
 
 ## Authenticating
 
@@ -40,6 +41,15 @@ Refusals: `401` unknown or revoked key, `403` key missing the scope, `429` over 
 **600 requests per hour per key**, counted per running instance. Cookie sessions are not limited by
 this. Requests that fail the scope check still count.
 
+## Paging
+
+The thread lists - `GET /api/conversations` and `GET /api/v1/jobs` - answer **200 rows per page**,
+newest first, alongside a `nextCursor`. Non-null means older rows exist: send it back verbatim as
+`?before=<nextCursor>` for the next page, and keep going until it is `null`. The cursor is the last
+row's sort key (`<updatedAtISO>~<id>`), so a thread touched while you page is never skipped or
+served twice; anything else is a `400`. `?origin=` on the jobs list filters the page it answers,
+so a page can carry fewer than 200 jobs and still have a cursor - follow the cursor, not the count.
+
 ## Routes that accept a key
 
 `src/server/auth/route-scopes.test.ts` enforces this table; if the two disagree, the test fails.
@@ -61,7 +71,7 @@ this. Requests that fail the scope check still count.
 | GET | `/api/studio/tail` | `read` | Re-attach to a detached run's event log. |
 | POST | `/api/studio/stop` | `write` | Stop a detached run. |
 | PUT | `/api/studio/attachments/[filename]` | `write` | Upload a chat attachment, returns its mediaKey. |
-| GET | `/api/conversations` | `read` | Thread list. |
+| GET | `/api/conversations` | `read` | Thread list, one page (see [Paging](#paging)). |
 | GET | `/api/conversations/[id]` | `read` | One transcript, with each post artifact's queue state. |
 | PATCH/DELETE | `/api/conversations/[id]` | `write` | Rename or delete a thread. |
 
@@ -75,15 +85,41 @@ sending "continue" to a failed or stuck job resumes it.
 
 | Method | Path | Scope | Purpose |
 | --- | --- | --- | --- |
-| POST | `/api/v1/jobs` | `write` | Start a job: `{goal, label?, budgetUsd?, timezone?}` returns `202 {id, title, status}`. |
-| GET | `/api/v1/jobs` | `read` | List jobs with liveness (`?origin=job\|chat\|agent` filters by who started the thread). |
+| POST | `/api/v1/jobs` | `write` | Start a job: `{goal, label?, budgetUsd?, timezone?, attachments?}` returns `202 {id, title, status}`. |
+| GET | `/api/v1/jobs` | `read` | List jobs with liveness, one page (see [Paging](#paging)). `?origin=job\|chat\|agent` filters by who started the thread. |
 | GET | `/api/v1/jobs/[id]` | `read` | One job: enriched transcript, `status`/`live`, and an outputs summary (posts with queue state, media). |
-| POST | `/api/v1/jobs/[id]/messages` | `write` | Another turn on the job: `{text, budgetUsd?, timezone?}` returns `202 {id, status}`. |
+| POST | `/api/v1/jobs/[id]/messages` | `write` | Another turn on the job: `{text, budgetUsd?, timezone?, attachments?}` returns `202 {id, status}`. |
 
 A running job streams into the same event log chat uses: follow it with
 `GET /api/studio/tail?conversationId=<id>`, stop it with `POST /api/studio/stop`. The `label`
 becomes the job's title; without one the goal's first line is. Refusals are the plan turn's:
-`402` when the trial is exhausted, `429` when planning too fast.
+`402` when the trial is exhausted, `429` when planning too fast, `400` for an attachment the
+account cannot use.
+
+#### Attaching files
+
+`attachments` puts files on the message itself - the same thing the web composer's paperclip does,
+and the agent **sees** them: an image's pixels are inlined for that turn, video and PDF go over by
+storage URI, and the media key is named in the text so it survives in history after the pixels are
+gone. Up to **6** per message; each entry needs a `name` and either `text` (inlined, 24k
+characters) or a `mediaKey`:
+
+```jsonc
+{
+  "goal": "Does this thumbnail work for the launch post?",
+  "attachments": [
+    { "name": "thumb.png", "mediaKey": "chat-uploads/<account>/thumb-mt1z.png", "contentType": "image/png" },
+    { "name": "notes.md", "text": "Launch is Thursday. Tone: plain, no hype." }
+  ]
+}
+```
+
+Get a `mediaKey` by uploading the bytes to `PUT /api/studio/attachments/[filename]` (10MB images,
+30MB video/PDF; filenames are `[A-Za-z0-9._-]`). **Any media key the account owns also works** - a
+brand asset from `workspace-assets/`, media an earlier run produced - because the server copies it
+into this account's `chat-uploads/` prefix before the turn, which is the only prefix the engine
+reads. A key belonging to another account is a `400` naming the file, not a run that dies halfway.
+A malformed entry is a `400` too: attachments are never dropped silently.
 
 ### Posts
 
@@ -199,3 +235,24 @@ scripts. Commands, flags and examples live in [README.md](../README.md).
 routes as tools instead of reading this file. Tool descriptions name the scope each call needs,
 and tools that put content out say so plainly - gate those on the host side. Setup snippets for
 Claude Code and Claude Desktop are in [README.md](../README.md#mcp-server).
+
+Two things the tool layer adds on top of the routes, because a local agent and the web app share
+one account and should hand work back and forth:
+
+- **Every job result carries `url`** - `<baseUrl>/studio/c/<id>`, the conversation the human opens.
+  `jobs_create`, `jobs_list`, `jobs_get` and `agents_wake` (its `conversationId`) all decorate.
+- **`jobs_list` pages like the route**: 200 jobs at a time plus `nextCursor`, which the tool takes
+  back as `before`.
+- **`jobs_brief`** answers a token-compact digest of `GET /api/v1/jobs/[id]`: header, the last 30
+  messages with reasoning and tool-activity parts dropped and each body clipped, an artifact
+  inventory, and post counts per queue status. Deterministic - no model in the loop. `jobs_get`
+  still serves the full transcript.
+- **`jobs_tail`** is `GET /api/studio/tail` in one bounded call: it replays from a cursor, follows
+  live, and returns `{live, cursor, events}` when the run ends, 60 seconds pass or 200 events
+  arrive. `live` is whether there was a stream to attach to - the route's `404` becomes
+  `{live: false, hint}` rather than an error; a run that already finished replays and closes on
+  its terminal event.
+
+The server also serves one **prompt**, `continue` (argument: `id`), which a host like Claude Code
+surfaces as a slash command: it hands the agent the same brief plus the instruction to reply into
+that conversation with `jobs_continue`.
