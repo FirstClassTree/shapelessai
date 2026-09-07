@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "shapeless": {
-      "command": "npx",
-      "args": ["-y", "shapelessai", "mcp"]
+      "type": "http",
+      "url": "https://shapelessai.com/mcp"
     }
   }
 }
