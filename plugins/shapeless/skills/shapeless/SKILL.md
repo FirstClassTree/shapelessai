@@ -6,14 +6,16 @@ description: Drive the user's Shapeless account - draft and publish social posts
 # Driving Shapeless
 
 Shapeless runs the user's social presence. You reach it through the `shapeless` MCP tools this
-plugin ships (or the `shapeless` CLI, same surface). Everything is one account, gated by an API
-key with scopes: `read`, `write`, `publish`. Only `publish` puts content into the world.
+plugin ships (or the `shapeless` CLI, same surface). Everything is one account, gated by a
+credential - the OAuth sign-in or an API key - with scopes: `read`, `write`, `publish`. Only
+`publish` puts content into the world.
 
 ## First contact
 
-Call `me` to confirm the key works and see the plan and credit balance. If it fails, the user
-needs a key: minted at https://shapelessai.com/studio/settings (Settings -> API keys), then either
-`shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
+Call `me` to confirm the credential works and see the plan and credit balance. If it fails, the user
+signs in over OAuth: run `/mcp`, pick shapeless, choose Authenticate, and allow in the browser tab.
+The stdio fallback (`npx shapelessai mcp`) needs a key instead: minted at
+https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
 
 ## The shape of the work
 

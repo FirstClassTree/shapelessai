@@ -95,10 +95,24 @@ shapeless connections
 
 ## MCP server
 
-`shapeless mcp` speaks MCP on stdio and exposes the same client as tools
-(`jobs_create`, `posts_approve`, `brain_write`, ...). Each tool's description
-names the scope its key needs; tools that publish content say so plainly, so a
-host can gate them.
+The hosted server is **`https://shapelessai.com/mcp`**. Add that URL to any host that speaks
+remote MCP - Claude (Settings -> Connectors -> Add custom connector), ChatGPT (Developer mode),
+Claude Code, Cursor, Codex, VS Code, Gemini CLI - and it opens a Shapeless tab to sign in and
+allow. OAuth, no key. The steps for each host, in the vendor's words, are at
+[shapelessai.com/connect](https://shapelessai.com/connect).
+
+```bash
+claude mcp add --transport http --scope user shapeless https://shapelessai.com/mcp   # then /mcp -> Authenticate
+codex mcp add shapeless --url https://shapelessai.com/mcp && codex mcp login shapeless
+gemini mcp add --transport http shapeless https://shapelessai.com/mcp
+```
+
+The same tools (`jobs_create`, `posts_approve`, `brain_write`, ...) also run locally:
+`shapeless mcp` speaks MCP on stdio with the API key from `shapeless login`, and adds the tools
+that read your disk (`assets_upload`, `brain_import`, and `files` on a job message). Every tool
+carries a title and annotations - read-only tools run freely, anything that publishes, spends or
+overwrites is flagged destructive so a host asks you first - and each description names the scope
+it needs.
 
 A job is a conversation, so work passes both ways between your terminal and the
 web app:
@@ -125,13 +139,13 @@ There is one prompt, **`continue`** (argument: `id`), which Claude Code surfaces
 as a slash command: it loads that conversation's brief and tells the agent to
 reply into the same thread with `jobs_continue`.
 
-Claude Code:
+Running the stdio server instead of the hosted one - Claude Code:
 
 ```bash
 claude mcp add shapeless -e SHAPELESS_API_KEY=slk_... -- npx shapelessai mcp
 ```
 
-Claude Desktop (`claude_desktop_config.json`), and most other MCP hosts:
+Claude Desktop (`claude_desktop_config.json`), and other stdio-only hosts:
 
 ```json
 {
@@ -149,15 +163,15 @@ Without the env var the server uses the key stored by `shapeless login`.
 
 ## Claude Code plugin
 
-This repo is also a plugin marketplace. The `shapeless` plugin wires up the MCP server and ships
-a skill that teaches Claude the ropes - scopes, the post queue, when to touch Brand Memory:
+This repo is also a plugin marketplace. The `shapeless` plugin wires up the hosted MCP server and
+ships a skill that teaches Claude the ropes - scopes, the post queue, when to touch Brand Memory:
 
 ```
 /plugin marketplace add FirstClassTree/shapelessai
 /plugin install shapeless@shapeless
 ```
 
-Then authenticate once with `shapeless login` (or export `SHAPELESS_API_KEY`).
+Then run `/mcp`, pick shapeless and choose Authenticate - a browser tab signs you in once.
 
 ## The API
 

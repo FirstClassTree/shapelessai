@@ -231,10 +231,18 @@ scripts. Commands, flags and examples live in [README.md](../README.md).
 
 ## The MCP server
 
-`shapeless mcp` serves the same client as MCP tools on stdio, so an agent host discovers these
-routes as tools instead of reading this file. Tool descriptions name the scope each call needs,
-and tools that put content out say so plainly - gate those on the host side. Setup snippets for
-Claude Code and Claude Desktop are in [README.md](../README.md#mcp-server).
+`https://shapelessai.com/mcp` serves the same client as MCP tools over streamable HTTP, so an
+agent host discovers these routes as tools instead of reading this file. Auth is OAuth 2.1
+(dynamic client registration, PKCE, consent on every authorize): the host holds an access token
+with the same three scopes a key has, and the routes accept it as a bearer exactly like a key -
+`401` expired, `403` scope never granted. Discovery is standard: the endpoint answers `401` with
+`WWW-Authenticate: Bearer resource_metadata=".../.well-known/oauth-protected-resource/mcp"`, and
+`/.well-known/oauth-authorization-server` names the endpoints. A person revokes a host under
+Settings -> API keys -> Connected apps. `shapeless mcp` serves the same tools on stdio with a key,
+plus the ones that read a local disk. Every tool carries a title and MCP annotations; read-only
+tools run freely, tools that publish, spend or overwrite are `destructiveHint: true` - gate those
+on the host side. Host setup is in [README.md](../README.md#mcp-server) and at
+[shapelessai.com/connect](https://shapelessai.com/connect).
 
 Two things the tool layer adds on top of the routes, because a local agent and the web app share
 one account and should hand work back and forth:
