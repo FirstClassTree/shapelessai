@@ -9,7 +9,7 @@
     {
       "name": "shapeless",
       "source": "./plugins/shapeless",
-      "description": "An AI social media team you talk to: research, write, design, render video, schedule and publish to LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads, Bluesky and Reddit, with your approval. Hosted MCP server (OAuth, no key) plus a skill that knows the ropes.",
+      "description": "An AI social media team you talk to: research, write, design, render video, schedule and publish to LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads and Bluesky, with your approval. Hosted MCP server (OAuth, no key) plus a skill that knows the ropes.",
       "author": {
         "name": "Shapeless AI",
         "url": "https://shapelessai.com"
