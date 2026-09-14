@@ -5,9 +5,15 @@ publishes content across your connected platforms, holds your Brand Memory, and 
 agents working while you sleep.
 
 This repo is the public home of the **agent surface**: the `shapeless` CLI, the MCP server, the
-[API contract for agents](docs/api-for-agents.md), the Claude Code plugin, and the issue tracker.
-Your agent or script drives a Shapeless account: create jobs and resume stuck ones, approve and
-publish posts, edit Brand Memory, manage the standing agents.
+Claude Code plugin, and the issue tracker. Your agent or script drives a Shapeless account: write
+and schedule posts, create jobs and resume stuck ones, approve and publish, edit Brand Memory,
+manage the standing agents.
+
+**The documentation lives at [shapelessai.com/docs](https://shapelessai.com/docs)** - routes,
+scopes, platform limits, refusal codes, one page per subject. Every page also answers raw
+Markdown: append `.md` to its path (`https://shapelessai.com/docs/posts.md`) or send
+`Accept: text/markdown`. An agent that wants all of it in one fetch should read
+[shapelessai.com/llms-full.txt](https://shapelessai.com/llms-full.txt).
 
 ## Install
 
@@ -20,7 +26,7 @@ Node 20 or newer.
 
 ## Authenticate
 
-Mint a key in the studio: **Settings -> API keys** (`/studio/settings`). Give it
+Mint a key in the studio: **Settings -> API keys** (`/studio/api-keys`). Give it
 only the scopes the caller needs - `read`, `write`, or `publish`. Only `publish`
 can put content out.
 
@@ -34,6 +40,35 @@ overrides the API host (default `https://shapelessai.com`). `shapeless logout`
 forgets the local copy; revoke the key itself in the studio.
 
 Every command takes `--json` to print the raw API response, and `--help`.
+
+## Post
+
+Write it yourself and put it on the rail - now, at a time, or in the account's next free queue
+slot. Needs the `publish` scope.
+
+```bash
+shapeless connections                     # the accounts and their ids
+shapeless platforms                       # limits, media rules, settings schema (no key needed)
+
+shapeless posts create --to <connectionId> --text "Shipping day."                       # now
+shapeless posts create --to <connectionId> --text "..." --at 2026-09-21T09:00:00+03:00  # at a time
+shapeless posts create --to <connectionId> --text "..." --queue                         # next free slot
+shapeless posts create --to <connectionId> --text "..." --media k1,k2 \
+  --first-comment "Link: https://..."      # LinkedIn, X, Bluesky
+shapeless posts create --to <youtubeConnectionId> --text "..." --media <clip.mp4 key> \
+  --title "The video title" --settings '{"privacyStatus":"unlisted"}'
+```
+
+The MCP tool is `posts_create` with the same arguments: `connectionId`, `text`, `mediaKeys`,
+`title`, `scheduledAt` **or** `queue: true`, `settings`, `firstComment`. Read `platforms_list`
+first for the platform's limits and its `settingsSchema`.
+
+**Free plan**: ten posts a day on the rail, counted on the UTC day each post goes out on, so a
+week planned ahead is ten a day rather than ten in total. The eleventh answers
+`402 {code: "free_daily_cap", limit, day, resetsAt}`, which names the day that is full. Composing,
+scheduling and publishing never spend credits, and Free also carries $5 of credits a month for the
+agent team. Paid plans have no cap. Details:
+[shapelessai.com/docs/posts](https://shapelessai.com/docs/posts).
 
 ## Jobs: durable runs
 
@@ -107,7 +142,7 @@ codex mcp add shapeless --url https://shapelessai.com/mcp && codex mcp login sha
 gemini mcp add --transport http shapeless https://shapelessai.com/mcp
 ```
 
-The same tools (`jobs_create`, `posts_approve`, `brain_write`, ...) also run locally:
+The same tools (`posts_create`, `jobs_create`, `posts_approve`, `brain_write`, ...) also run locally:
 `shapeless mcp` speaks MCP on stdio with the API key from `shapeless login`, and adds the tools
 that read your disk (`assets_upload`, `brain_import`, and `files` on a job message). Every tool
 carries a title and annotations - read-only tools run freely, anything that publishes, spends or
@@ -175,8 +210,22 @@ Then run `/mcp`, pick shapeless and choose Authenticate - a browser tab signs yo
 
 ## The API
 
-Everything above rides one documented contract: [docs/api-for-agents.md](docs/api-for-agents.md) -
-routes, scopes, rate limits, and what deliberately refuses an API key.
+Everything above rides one documented contract:
+[shapelessai.com/docs/api](https://shapelessai.com/docs/api) - every route, the scope each needs,
+rate limits, and what deliberately refuses an API key. Machine-readable at
+[/api/openapi.json](https://shapelessai.com/api/openapi.json).
+
+| Page | What it answers |
+| --- | --- |
+| [/docs](https://shapelessai.com/docs) | Start here: key, MCP URL, CLI, the three moves |
+| [/docs/posts](https://shapelessai.com/docs/posts) | Create, schedule, queue, media, first comment, every refusal |
+| [/docs/platforms](https://shapelessai.com/docs/platforms) | Limits and rules per platform, live from `GET /api/platforms` |
+| [/docs/api](https://shapelessai.com/docs/api) | Every route a key opens, and the scope it needs |
+| [/docs/cli](https://shapelessai.com/docs/cli) | The `shapeless` command |
+| [/docs/mcp](https://shapelessai.com/docs/mcp) | The hosted MCP server and its tools |
+| [/docs/jobs](https://shapelessai.com/docs/jobs) | Durable runs |
+| [/docs/brand-memory](https://shapelessai.com/docs/brand-memory) | The account's durable knowledge |
+| [/docs/auth](https://shapelessai.com/docs/auth) | Keys, scopes, OAuth, rate limits |
 
 ## Issues
 

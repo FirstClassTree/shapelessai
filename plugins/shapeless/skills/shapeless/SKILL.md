@@ -10,6 +10,23 @@ plugin ships (or the `shapeless` CLI, same surface). Everything is one account, 
 credential - the OAuth sign-in or an API key - with scopes: `read`, `write`, `publish`. Only
 `publish` puts content into the world.
 
+## The documentation
+
+Do not guess this API. It is published, and it answers Markdown:
+
+- **https://shapelessai.com/docs** - one page per subject. Append `.md` to any path
+  (`https://shapelessai.com/docs/posts.md`) or send `Accept: text/markdown` to get the source
+  instead of the page.
+- **https://shapelessai.com/llms-full.txt** - every page in one fetch. Read this when you need the
+  whole surface; read a single `.md` page when you need one answer.
+- **https://shapelessai.com/api/openapi.json** - OpenAPI 3.1 for every route.
+
+Straight to the page you need: [posts](https://shapelessai.com/docs/posts.md) ·
+[platforms](https://shapelessai.com/docs/platforms.md) · [api](https://shapelessai.com/docs/api.md) ·
+[jobs](https://shapelessai.com/docs/jobs.md) ·
+[brand memory](https://shapelessai.com/docs/brand-memory.md) ·
+[auth](https://shapelessai.com/docs/auth.md).
+
 ## First contact
 
 Call `me` to confirm the credential works and see the plan and credit balance. If it fails, the user
@@ -32,6 +49,34 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
 - **Posts** are the queue: proposed -> scheduled -> published. `posts_list` / `posts_get` to
   review, `posts_approve` to accept a proposal into the schedule, `posts_dismiss` to reject,
   `posts_publish` to put one out now.
+- **`posts_create` puts a post you wrote on a real account.** Call `platforms_list` first - it
+  carries each platform's text limit, media rules, whether a title is required, first-comment
+  support, and the JSON Schema for its `settings`. Then:
+
+  ```jsonc
+  {
+    "connectionId": "<from connections_list>",
+    "text": "The post.",
+    "scheduledAt": "2026-09-21T09:00:00+03:00",  // omit for now
+    "queue": true,                    // instead of scheduledAt: the next free slot
+    "mediaKeys": ["..."],             // media already in the account
+    "title": "The video title",       // YouTube requires one
+    "settings": { },                  // per platform; platforms_list has the schema
+    "firstComment": "Link: https://..."   // LinkedIn, X, Bluesky only
+  }
+  ```
+
+  `scheduledAt` and `queue` are exclusive. A platform rule refuses at creation with a `422` that
+  names the rule, never at publish time. The CLI equivalent is
+  `shapeless posts create --to <id> --text "..." [--at <ISO> | --queue] [--media k1,k2]
+  [--title "..."] [--settings '{json}'] [--first-comment "..."]`.
+- **The Free plan posts five a day on the rail**, counted on the UTC day each post goes out on -
+  so a week planned ahead is five a day, not five in total, and approving a proposal counts the
+  same as creating one. The sixth answers
+  `402 {code: "free_daily_cap", limit, day, resetsAt}` naming the day that is full: move the post
+  to a day with room, or tell the user their account is on Free. Paid plans have no cap.
+  Composing, scheduling and publishing never spend credits; Free also carries $5 of credits a
+  month for the generative work.
 - **Agents** are standing schedules (`agents_list`, `agents_save`, `agents_wake`) - recurring
   content work the server runs on its own.
 - **Brand Memory** (`brain_tree`, `brain_read`, `brain_write`, `brain_import`) is the account's
@@ -51,4 +96,8 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
   makes this turn's agent look at it. They are different asks - do the one you were asked for.
 - The API is rate-limited at 600 requests/hour per key; poll jobs with restraint.
 
-The full contract (routes, scopes, refusal codes) lives in the repo's `docs/api-for-agents.md`.
+- Read `posts_create`'s rules before writing the post, not after a `422`: the character limit and
+  the media rules are in `platforms_list`, and a draft written past the limit is a rewrite.
+
+The full contract - routes, scopes, refusal codes - is at https://shapelessai.com/docs/api
+(Markdown at https://shapelessai.com/docs/api.md).
