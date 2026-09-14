@@ -63,8 +63,8 @@ The MCP tool is `posts_create` with the same arguments: `connectionId`, `text`, 
 `title`, `scheduledAt` **or** `queue: true`, `settings`, `firstComment`. Read `platforms_list`
 first for the platform's limits and its `settingsSchema`.
 
-**Free plan**: five posts a day on the rail, counted on the UTC day each post goes out on, so a
-week planned ahead is five a day rather than five in total. The sixth answers
+**Free plan**: ten posts a day on the rail, counted on the UTC day each post goes out on, so a
+week planned ahead is ten a day rather than ten in total. The eleventh answers
 `402 {code: "free_daily_cap", limit, day, resetsAt}`, which names the day that is full. Composing,
 scheduling and publishing never spend credits, and Free also carries $5 of credits a month for the
 agent team. Paid plans have no cap. Details:
