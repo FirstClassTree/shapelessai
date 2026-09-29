@@ -196,6 +196,16 @@ Claude Desktop (`claude_desktop_config.json`), and other stdio-only hosts:
 
 Without the env var the server uses the key stored by `shapeless login`.
 
+## Agent Plugins (Cursor, Kiro, Copilot, Codex) and Gemini CLI
+
+`plugins/shapeless` is also an [Agent Plugins 1.0](https://agent-plugins.org) package (`plugin.json`,
+`mcp.json`, `skills/`), so any client that loads that format installs the hosted MCP server and the
+skill from this repo. Gemini CLI reads `gemini-extension.json` at the root:
+
+```
+gemini extensions install https://github.com/FirstClassTree/shapelessai
+```
+
 ## Claude Code plugin
 
 This repo is also a plugin marketplace. The `shapeless` plugin wires up the hosted MCP server and
