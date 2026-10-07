@@ -20,9 +20,6 @@ Do not guess this API. It is published, and it answers Markdown:
 - **https://shapelessai.com/llms-full.txt** - every page in one fetch. Read this when you need the
   whole surface; read a single `.md` page when you need one answer.
 - **https://shapelessai.com/api/openapi.json** - OpenAPI 3.1 for every route.
-- **https://shapelessai.com/capabilities** - one page per thing you can do, each naming the MCP tool,
-  the REST call and the CLI line (append `.md`). Some capabilities (queue slots, inbox, manager,
-  analytics, ads) have no MCP tool yet: those pages give the REST call to use with an API key.
 
 Straight to the page you need: [posts](https://shapelessai.com/docs/posts.md) ·
 [platforms](https://shapelessai.com/docs/platforms.md) · [api](https://shapelessai.com/docs/api.md) ·
