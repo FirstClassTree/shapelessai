@@ -37,15 +37,16 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
 ## The shape of the work
 
 - **Jobs** are durable server-side runs: `jobs_create` with a goal ("draft three posts about the
-  beta launch") returns an id and keeps going whether or not you stay attached. `jobs_get` shows
-  the transcript and outputs; `jobs_continue` resumes a stuck or finished run with new
-  instructions. Prefer a job for anything generative - the server holds the account's Brand
-  Memory, connected platforms, and media pipeline.
-- **Files ride the message**: `jobs_create` and `jobs_continue` take `files` (absolute local
-  paths - `.md`/`.txt` inline, images, video, audio and PDF upload on the way) and `mediaKeys`
-  (anything already in the account, such as what `assets_upload` returned). Up to 6 per message.
-  The agent reads them for real - an image's pixels, not just its filename - and the human sees
-  the file in the studio transcript. Hand over the file rather than describing it.
+  beta launch") returns an id and keeps going whether or not you stay attached. `jobs_list` lists
+  them, `jobs_get` shows the transcript and outputs, `jobs_brief` is the compact version for
+  continuing, `jobs_tail` watches a run live, `jobs_run` presses Run on a proposed plan,
+  `jobs_continue` resumes a stuck or finished run with new instructions, and `jobs_stop` stops
+  one. Prefer a job for anything generative - posts, carousels, images, narrated video - the
+  server holds the account's Brand Memory, connected platforms, and media pipeline.
+- **Media rides the message** as `mediaKeys`: anything already in the account (`assets_list`).
+  Up to 6 per message. The agent reads them for real - an image's pixels, not just its filename.
+  The hosted server has no disk, so a local file goes in first with the CLI
+  (`shapeless assets upload ./file`) or `PUT /api/brain/assets/{filename}`, which returns the key.
 - **Posts** are the queue: proposed -> scheduled -> published. `posts_list` / `posts_get` to
   review, `posts_approve` to accept a proposal into the schedule, `posts_dismiss` to reject,
   `posts_publish` to put one out now.
@@ -70,18 +71,21 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
   names the rule, never at publish time. The CLI equivalent is
   `shapeless posts create --to <id> --text "..." [--at <ISO> | --queue] [--media k1,k2]
   [--title "..."] [--settings '{json}'] [--first-comment "..."]`.
-- **The Free plan posts five a day on the rail**, counted on the UTC day each post goes out on -
-  so a week planned ahead is five a day, not five in total, and approving a proposal counts the
-  same as creating one. The sixth answers
+- **The Free plan posts ten a day on the rail**, counted on the UTC day each post goes out on -
+  so a week planned ahead is ten a day, not ten in total, and approving a proposal counts the
+  same as creating one. The eleventh answers
   `402 {code: "free_daily_cap", limit, day, resetsAt}` naming the day that is full: move the post
   to a day with room, or tell the user their account is on Free. Paid plans have no cap.
   Composing, scheduling and publishing never spend credits; Free also carries $5 of credits a
   month for the generative work.
 - **Agents** are standing schedules (`agents_list`, `agents_save`, `agents_wake`) - recurring
   content work the server runs on its own.
-- **Brand Memory** (`brain_tree`, `brain_read`, `brain_write`, `brain_import`) is the account's
-  durable knowledge: voice, positioning, product facts. Edit it when the user corrects how their
-  brand should sound - that fixes every future post, not just one.
+- **Brand Memory** (`brain_tree`, `brain_read`, `brain_write`) is the account's durable
+  knowledge: voice, positioning, product facts. Edit it when the user corrects how their brand
+  should sound - that fixes every future post, not just one.
+- **Actors** (`characters_list`, `characters_voice`) are the faces and voices videos use.
+  `characters_voice` designs a voice from a description or clones one from a sample the user
+  holds the rights to - it spends credit, so confirm first.
 
 ## Ground rules
 
@@ -92,7 +96,7 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
   blind.
 - Generative quality issues (wrong tone, wrong facts) are Brand Memory issues - offer to fix the
   source, not just the symptom.
-- `assets_upload` puts a file in the brand library for reuse; attaching it to a message is what
+- Putting a file in the brand library is for reuse; passing its media key on a message is what
   makes this turn's agent look at it. They are different asks - do the one you were asked for.
 - The API is rate-limited at 600 requests/hour per key; poll jobs with restraint.
 
