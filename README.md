@@ -136,6 +136,16 @@ Claude Code, Cursor, Codex, VS Code, Gemini CLI - and it opens a Shapeless tab t
 allow. OAuth, no key. The steps for each host, in the vendor's words, are at
 [shapelessai.com/connect](https://shapelessai.com/connect).
 
+A client that cannot open a browser (the Agent SDK, a CI job, a self-hosted agent) skips OAuth: send
+an API key from **Settings -> API keys** as `Authorization: Bearer slk_...` to the same URL. Any MCP
+client that sets a header works; the scope is the key's.
+
+```bash
+curl -s https://shapelessai.com/mcp -H "Authorization: Bearer $SHAPELESS_API_KEY" \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
 ```bash
 claude mcp add --transport http --scope user shapeless https://shapelessai.com/mcp   # then /mcp -> Authenticate
 codex mcp add shapeless --url https://shapelessai.com/mcp && codex mcp login shapeless
