@@ -247,7 +247,9 @@ rate limits, and what deliberately refuses an API key. Machine-readable at
 | [/docs/brand-memory](https://shapelessai.com/docs/brand-memory) | The account's durable knowledge |
 | [/docs/auth](https://shapelessai.com/docs/auth) | Keys, scopes, OAuth, rate limits |
 
-## Issues
+## Support and privacy
 
-Found a bug or hit a wall? [Open an issue](../../issues). The CLI is developed against the
-contract above; this repo is where it ships.
+- Support: [hello@shapelessai.com](mailto:hello@shapelessai.com), or [open an issue](../../issues).
+  The CLI is developed against the contract above; this repo is where it ships.
+- Privacy policy: [shapelessai.com/privacy](https://shapelessai.com/privacy)
+- Terms: [shapelessai.com/terms](https://shapelessai.com/terms)
