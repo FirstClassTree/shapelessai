@@ -228,6 +228,21 @@ ships a skill that teaches Claude the ropes - scopes, the post queue, when to to
 
 Then run `/mcp`, pick shapeless and choose Authenticate - a browser tab signs you in once.
 
+## Where else Shapeless is listed
+
+The same server and skill, installable from the registry your client already reads:
+
+- MCP: [Official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/com.shapelessai%2Fshapeless/versions/latest) (`com.shapelessai/shapeless`),
+  [Smithery](https://smithery.ai/servers/shapelessai/shapeless),
+  [Glama](https://glama.ai/mcp/connectors/com.shapelessai/shapeless),
+  [LobeHub](https://lobehub.com/mcp/firstclasstree-shapelessai)
+- Plugins and skills: [cursor.directory](https://cursor.directory/plugins/shapeless),
+  [ClawHub](https://clawhub.ai/firstclasstree/skills/shapeless),
+  [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapeless)
+- Product directories: [Twelve Tools](https://twelve.tools/shapelessai),
+  [Product Watch](https://productwatch.io/products/shapelessai),
+  [Lifto](https://liftoapp.com/product/shapelessai)
+
 ## The API
 
 Everything above rides one documented contract:
@@ -247,7 +262,9 @@ rate limits, and what deliberately refuses an API key. Machine-readable at
 | [/docs/brand-memory](https://shapelessai.com/docs/brand-memory) | The account's durable knowledge |
 | [/docs/auth](https://shapelessai.com/docs/auth) | Keys, scopes, OAuth, rate limits |
 
-## Issues
+## Support and privacy
 
-Found a bug or hit a wall? [Open an issue](../../issues). The CLI is developed against the
-contract above; this repo is where it ships.
+- Support: [hello@shapelessai.com](mailto:hello@shapelessai.com), or [open an issue](../../issues).
+  The CLI is developed against the contract above; this repo is where it ships.
+- Privacy policy: [shapelessai.com/privacy](https://shapelessai.com/privacy)
+- Terms: [shapelessai.com/terms](https://shapelessai.com/terms)
