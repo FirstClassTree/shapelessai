@@ -228,6 +228,21 @@ ships a skill that teaches Claude the ropes - scopes, the post queue, when to to
 
 Then run `/mcp`, pick shapeless and choose Authenticate - a browser tab signs you in once.
 
+## Where else Shapeless is listed
+
+The same server and skill, installable from the registry your client already reads:
+
+- MCP: [Official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/com.shapelessai%2Fshapeless/versions/latest) (`com.shapelessai/shapeless`),
+  [Smithery](https://smithery.ai/servers/shapelessai/shapeless),
+  [Glama](https://glama.ai/mcp/connectors/com.shapelessai/shapeless),
+  [LobeHub](https://lobehub.com/mcp/firstclasstree-shapelessai)
+- Plugins and skills: [cursor.directory](https://cursor.directory/plugins/shapeless),
+  [ClawHub](https://clawhub.ai/firstclasstree/skills/shapeless),
+  [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapeless)
+- Product directories: [Twelve Tools](https://twelve.tools/shapelessai),
+  [Product Watch](https://productwatch.io/products/shapelessai),
+  [Lifto](https://liftoapp.com/product/shapelessai)
+
 ## The API
 
 Everything above rides one documented contract:
