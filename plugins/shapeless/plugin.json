@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "shapeless",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Drive a Shapeless account: jobs, posts, agents, Brand Memory - the hosted MCP server (sign in with OAuth, no key) plus a skill that knows the ropes.",
   "author": {
     "name": "Shapeless AI",
