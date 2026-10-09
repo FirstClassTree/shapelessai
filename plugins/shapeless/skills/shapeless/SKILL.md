@@ -23,7 +23,7 @@ Do not guess this API. It is published, and it answers Markdown:
 
 Straight to the page you need: [posts](https://shapelessai.com/docs/posts.md) ·
 [platforms](https://shapelessai.com/docs/platforms.md) · [api](https://shapelessai.com/docs/api.md) ·
-[jobs](https://shapelessai.com/docs/jobs.md) ·
+[jobs](https://shapelessai.com/docs/jobs.md) · [mcp tools](https://shapelessai.com/docs/mcp.md) ·
 [brand memory](https://shapelessai.com/docs/brand-memory.md) ·
 [auth](https://shapelessai.com/docs/auth.md).
 
@@ -78,6 +78,16 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
   to a day with room, or tell the user their account is on Free. Paid plans have no cap.
   Composing, scheduling and publishing never spend credits; Free also carries $5 of credits a
   month for the generative work.
+- **Studio tools** are the studio agent's own tools, each its own MCP tool under the same name,
+  for one direct step when a whole job is more than you need: `generate_image`,
+  `generate_footage`, `edit_footage`, `render_carousel`, `render_thumbnail`, `speak`,
+  `caption_file`, `web_search`, `read_page`, `screenshot_page`, `x_pulse`, `news_search` and
+  more (`tools_list` reads the catalog live, with prices). Each takes the `write` scope and
+  answers `{tool, output, media: [{key, url}], chargedUsd}`; put a `media` key in
+  `posts_create`'s `mediaKeys` to publish it. One with a price spends credit, so confirm first.
+  The full table is at [docs/mcp](https://shapelessai.com/docs/mcp.md).
+- **Capabilities** (`capabilities_list`) say what Shapeless can do, live or planned;
+  `capabilities_want` records that the user wants a planned one.
 - **Agents** are standing schedules (`agents_list`, `agents_save`, `agents_wake`) - recurring
   content work the server runs on its own.
 - **Brand Memory** (`brain_tree`, `brain_read`, `brain_write`) is the account's durable
