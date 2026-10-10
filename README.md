@@ -1,11 +1,11 @@
-# Shapeless
+# ShapelessAI
 
-[Shapeless](https://shapelessai.com) runs your social presence: it drafts, schedules, and
+[ShapelessAI](https://shapelessai.com) runs your social presence: it drafts, schedules, and
 publishes content across your connected platforms, holds your Brand Memory, and keeps standing
 agents working while you sleep.
 
 This repo is the public home of the **agent surface**: the `shapeless` CLI, the MCP server, the
-Claude Code plugin, and the issue tracker. Your agent or script drives a Shapeless account: write
+Claude Code plugin, and the issue tracker. Your agent or script drives a ShapelessAI account: write
 and schedule posts, create jobs and resume stuck ones, approve and publish, edit Brand Memory,
 manage the standing agents.
 
@@ -132,7 +132,7 @@ shapeless connections
 
 The hosted server is **`https://shapelessai.com/mcp`**. Add that URL to any host that speaks
 remote MCP - Claude (Settings -> Connectors -> Add custom connector), ChatGPT (Developer mode),
-Claude Code, Cursor, Codex, VS Code, Gemini CLI - and it opens a Shapeless tab to sign in and
+Claude Code, Cursor, Codex, VS Code, Gemini CLI - and it opens a ShapelessAI tab to sign in and
 allow. OAuth, no key. The steps for each host, in the vendor's words, are at
 [shapelessai.com/connect](https://shapelessai.com/connect).
 
@@ -235,7 +235,7 @@ ships a skill that teaches Claude the ropes - scopes, the post queue, when to to
 
 Then run `/mcp`, pick shapeless and choose Authenticate - a browser tab signs you in once.
 
-## Where else Shapeless is listed
+## Where else ShapelessAI is listed
 
 The same server and skill, installable from the registry your client already reads:
 

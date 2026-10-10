@@ -1,11 +1,11 @@
 ---
 name: shapeless
-description: Drive the user's Shapeless account - draft and publish social posts, run durable content jobs, manage standing agents and Brand Memory. Use when the user asks to create, review, schedule, or publish social content, or to check on their Shapeless jobs, posts, agents, or brand.
+description: Drive the user's ShapelessAI account - draft and publish social posts, run durable content jobs, manage standing agents and Brand Memory. Use when the user asks to create, review, schedule, or publish social content, or to check on their ShapelessAI jobs, posts, agents, or brand.
 ---
 
-# Driving Shapeless
+# Driving ShapelessAI
 
-Shapeless runs the user's social presence. You reach it through the `shapeless` MCP tools this
+ShapelessAI runs the user's social presence. You reach it through the `shapeless` MCP tools this
 plugin ships (or the `shapeless` CLI, same surface). Everything is one account, gated by a
 credential - the OAuth sign-in or an API key - with scopes: `read`, `write`, `publish`. Only
 `publish` puts content into the world.
@@ -86,7 +86,7 @@ https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPE
   answers `{tool, output, media: [{key, url}], chargedUsd}`; put a `media` key in
   `posts_create`'s `mediaKeys` to publish it. One with a price spends credit, so confirm first.
   The full table is at [docs/mcp](https://shapelessai.com/docs/mcp.md).
-- **Capabilities** (`capabilities_list`) say what Shapeless can do, live or planned;
+- **Capabilities** (`capabilities_list`) say what ShapelessAI can do, live or planned;
   `capabilities_want` records that the user wants a planned one.
 - **Agents** are standing schedules (`agents_list`, `agents_save`, `agents_wake`) - recurring
   content work the server runs on its own.
