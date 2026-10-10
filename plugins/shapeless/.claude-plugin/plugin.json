@@ -1,7 +1,7 @@
 {
   "name": "shapeless",
   "displayName": "ShapelessAI",
-  "description": "Drive a Shapeless account: jobs, posts, agents, Brand Memory - the hosted MCP server (sign in with OAuth, no key) plus a skill that knows the ropes.",
+  "description": "Drive a ShapelessAI account: jobs, posts, agents, Brand Memory - the hosted MCP server (sign in with OAuth, no key) plus a skill that knows the ropes.",
   "version": "0.2.2",
   "author": {
     "name": "ShapelessAI",
