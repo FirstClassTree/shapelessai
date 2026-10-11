@@ -1,7 +1,7 @@
 {
   "name": "shapeless",
-  "version": "0.2.2",
-  "description": "An AI social media team for founders: make and publish posts, carousels and short video to LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads, Reddit and Bluesky. Hosted MCP server, OAuth sign-in, no key.",
+  "version": "0.2.3",
+  "description": "An AI social media team for founders: make and publish posts, carousels and short video to LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads and Bluesky. Hosted MCP server, OAuth sign-in, no key.",
   "mcpServers": {
     "shapeless": {
       "httpUrl": "https://shapelessai.com/mcp"

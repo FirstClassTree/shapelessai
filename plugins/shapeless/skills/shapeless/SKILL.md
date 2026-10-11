@@ -34,6 +34,27 @@ signs in over OAuth: run `/mcp`, pick shapeless, choose Authenticate, and allow 
 The stdio fallback (`npx shapelessai mcp`) needs a key instead: minted at
 https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
 
+**No `me` tool at all?** Then this skill arrived without its server (a ClawHub or skills.sh
+install carries only this file). The server is hosted at `https://shapelessai.com/mcp`
+(Streamable HTTP, OAuth, nothing to run locally). Add it once, then sign in; the browser tab
+that opens also creates the account when the user has none, and the Free plan is enough to post:
+
+```bash
+# OpenClaw
+openclaw mcp set shapeless '{"url":"https://shapelessai.com/mcp","transport":"streamable-http","auth":"oauth"}'
+openclaw mcp login shapeless
+
+# Claude Code
+claude mcp add --transport http --scope user shapeless https://shapelessai.com/mcp   # then /mcp, Authenticate
+
+# Codex
+codex mcp add shapeless --url https://shapelessai.com/mcp && codex mcp login shapeless
+```
+
+Every other host (Hermes, Cursor, Gemini CLI, ChatGPT, Claude, Grok, Perplexity) has its steps at
+https://shapelessai.com/connect. Tell the user which command you ran and that one sign-in is
+theirs to do; the tools appear once the host reloads its servers (the next turn or session).
+
 ## The shape of the work
 
 - **Jobs** are durable server-side runs: `jobs_create` with a goal ("draft three posts about the
