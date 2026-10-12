@@ -94,7 +94,8 @@ theirs to do; the tools appear once the host reloads its servers (the next turn 
   [--title "..."] [--settings '{json}'] [--first-comment "..."]`.
 - **The Free plan posts ten a day on the rail**, counted on the UTC day each post goes out on -
   so a week planned ahead is ten a day, not ten in total, and approving a proposal counts the
-  same as creating one. The eleventh answers
+  same as creating one. A post that failed keeps its slot: retry it with `posts_publish` on the
+  same id, which takes no new slot, never by creating it again. The eleventh answers
   `402 {code: "free_daily_cap", limit, day, resetsAt}` naming the day that is full: move the post
   to a day with room, or tell the user their account is on Free. Paid plans have no cap.
   Composing, scheduling and publishing never spend credits; Free also carries $5 of credits a
