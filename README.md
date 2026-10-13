@@ -245,7 +245,7 @@ The same server and skill, installable from the registry your client already rea
   [LobeHub](https://lobehub.com/mcp/firstclasstree-shapelessai)
 - Plugins and skills: [cursor.directory](https://cursor.directory/plugins/shapeless),
   [ClawHub](https://clawhub.ai/firstclasstree/skills/shapeless),
-  [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapeless)
+  [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapelessai)
 - Product directories: [Twelve Tools](https://twelve.tools/shapelessai),
   [Product Watch](https://productwatch.io/products/shapelessai),
   [Lifto](https://liftoapp.com/product/shapelessai)

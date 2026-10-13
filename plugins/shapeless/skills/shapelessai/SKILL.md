@@ -1,5 +1,5 @@
 ---
-name: shapeless
+name: shapelessai
 description: Drive the user's ShapelessAI account - draft and publish social posts, run durable content jobs, manage standing agents and Brand Memory. Use when the user asks to create, review, schedule, or publish social content, or to check on their ShapelessAI jobs, posts, agents, or brand.
 ---
 
