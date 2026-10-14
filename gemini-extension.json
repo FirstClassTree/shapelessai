@@ -1,7 +1,7 @@
 {
   "name": "shapelessai",
   "version": "0.2.5",
-  "description": "An AI social media team for founders: make and publish posts, carousels and short video to LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads and Bluesky. Hosted MCP server, OAuth sign-in, no key.",
+  "description": "An AI social media team built to outperform the one you'd hire: edits your video like a pro, writes and designs posts from what wins, publishes to 12 networks on your approval. Hosted MCP server, OAuth sign-in, no key.",
   "mcpServers": {
     "shapeless": {
       "httpUrl": "https://shapelessai.com/mcp"
