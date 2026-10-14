@@ -1,0 +1,29 @@
+identity:
+  author: shapelessai
+  name: shapelessai
+  label:
+    en_US: ShapelessAI
+  description:
+    en_US: Schedule and publish social media posts on the accounts you connected to ShapelessAI.
+  icon: icon.png
+  tags:
+    - social
+    - productivity
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: ShapelessAI API key
+    placeholder:
+      en_US: slk_...
+    help:
+      en_US: Create a key in ShapelessAI under Settings, API keys (Studio). Connect your social accounts in ShapelessAI first.
+    url: https://shapelessai.com/studio/api-keys
+tools:
+  - tools/list_accounts.yaml
+  - tools/create_post.yaml
+  - tools/list_posts.yaml
+extra:
+  python:
+    source: provider/shapelessai.py

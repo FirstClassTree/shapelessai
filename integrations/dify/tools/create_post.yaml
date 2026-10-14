@@ -1,0 +1,60 @@
+identity:
+  name: create_post
+  author: shapelessai
+  label:
+    en_US: Create post
+description:
+  human:
+    en_US: Schedule a post on one of your connected accounts, at the account's next queue slot, at a set time, or right away.
+  llm: Schedule a text post on one connected social account. By default it goes into the account's next free queue slot. Get account_id from list_accounts. Set when to "at" with scheduled_at (ISO 8601, with a timezone) for a set time, or to "now" to publish immediately, which cannot be undone.
+parameters:
+  - name: account_id
+    type: string
+    required: true
+    label:
+      en_US: Account ID
+    human_description:
+      en_US: The account to post on, as returned by List accounts.
+    llm_description: The id of the account from list_accounts.
+    form: llm
+  - name: text
+    type: string
+    required: true
+    label:
+      en_US: Post text
+    human_description:
+      en_US: The text of the post.
+    llm_description: The full text of the post, within the platform's length limit.
+    form: llm
+  - name: when
+    type: select
+    required: false
+    default: queue
+    label:
+      en_US: When
+    human_description:
+      en_US: Next queue slot, a set time, or publish now.
+    llm_description: '"queue" (default, next free slot), "at" (use scheduled_at) or "now" (publish immediately).'
+    options:
+      - value: queue
+        label:
+          en_US: Next queue slot
+      - value: at
+        label:
+          en_US: At a set time
+      - value: now
+        label:
+          en_US: Publish now
+    form: llm
+  - name: scheduled_at
+    type: string
+    required: false
+    label:
+      en_US: Scheduled time
+    human_description:
+      en_US: ISO 8601 time with a timezone, for example 2026-11-02T09:00:00Z. Used when When is At a set time.
+    llm_description: ISO 8601 date-time with timezone, required when when is "at".
+    form: llm
+extra:
+  python:
+    source: tools/create_post.py

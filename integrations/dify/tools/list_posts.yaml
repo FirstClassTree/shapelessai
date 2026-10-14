@@ -1,0 +1,44 @@
+identity:
+  name: list_posts
+  author: shapelessai
+  label:
+    en_US: List posts
+description:
+  human:
+    en_US: List your recent ShapelessAI posts, optionally by status.
+  llm: List recent posts in ShapelessAI, newest first, with status, scheduled time and the live URL once published. Optionally filter by status.
+parameters:
+  - name: status
+    type: select
+    required: false
+    label:
+      en_US: Status
+    human_description:
+      en_US: Only posts with this status.
+    llm_description: Optional status filter.
+    options:
+      - value: scheduled
+        label:
+          en_US: Scheduled
+      - value: published
+        label:
+          en_US: Published
+      - value: failed
+        label:
+          en_US: Failed
+    form: llm
+  - name: limit
+    type: number
+    required: false
+    default: 20
+    min: 1
+    max: 50
+    label:
+      en_US: Limit
+    human_description:
+      en_US: How many posts to return, 1 to 50.
+    llm_description: How many posts, 1 to 50.
+    form: llm
+extra:
+  python:
+    source: tools/list_posts.py
