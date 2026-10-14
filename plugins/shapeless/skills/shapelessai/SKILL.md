@@ -32,7 +32,7 @@ Straight to the page you need: [posts](https://shapelessai.com/docs/posts.md) ·
 Call `me` to confirm the credential works and see the plan and credit balance. If it fails, the user
 signs in over OAuth: run `/mcp`, pick shapeless, choose Authenticate, and allow in the browser tab.
 The stdio fallback (`npx shapelessai mcp`) needs a key instead: minted at
-https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
+<https://shapelessai.com/studio/api-keys>, then `shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
 
 **No `me` tool at all?** Then this skill arrived without its server (a ClawHub or skills.sh
 install carries only this file). The server is hosted at `https://shapelessai.com/mcp`
@@ -52,7 +52,7 @@ codex mcp add shapeless --url https://shapelessai.com/mcp && codex mcp login sha
 ```
 
 Every other host (Hermes, Cursor, Gemini CLI, ChatGPT, Claude, Grok, Perplexity) has its steps at
-https://shapelessai.com/connect. Tell the user which command you ran and that one sign-in is
+<https://shapelessai.com/connect>. Tell the user which command you ran and that one sign-in is
 theirs to do; the tools appear once the host reloads its servers (the next turn or session).
 
 ## The shape of the work
@@ -135,5 +135,5 @@ theirs to do; the tools appear once the host reloads its servers (the next turn 
 - Read `posts_create`'s rules before writing the post, not after a `422`: the character limit and
   the media rules are in `platforms_list`, and a draft written past the limit is a rewrite.
 
-The full contract - routes, scopes, refusal codes - is at https://shapelessai.com/docs/api
-(Markdown at https://shapelessai.com/docs/api.md).
+The full contract - routes, scopes, refusal codes - is at <https://shapelessai.com/docs/api>
+(Markdown at <https://shapelessai.com/docs/api.md>).
