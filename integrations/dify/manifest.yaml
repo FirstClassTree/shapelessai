@@ -1,0 +1,34 @@
+version: 0.0.1
+type: plugin
+author: shapelessai
+name: shapelessai
+label:
+  en_US: ShapelessAI
+description:
+  en_US: Schedule and publish social media posts from Dify workflows and agents with ShapelessAI, on the accounts you connected (LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads and Bluesky).
+icon: icon.png
+resource:
+  memory: 268435456
+plugins:
+  tools:
+    - provider/shapelessai.yaml
+meta:
+  version: 0.0.1
+  minimum_dify_version: 1.0.0
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+created_at: 2026-10-14T12:00:00Z
+privacy: PRIVACY.md
+tags:
+  - social
+  - productivity
+repo: https://github.com/FirstClassTree/shapelessai/tree/main/integrations/dify
+contact: hello@shapelessai.com
+network:
+  domains:
+    - shapelessai.com
