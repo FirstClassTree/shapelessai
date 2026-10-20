@@ -17,4 +17,4 @@ them to a first post now, in this conversation.
 4. Draft it with `posts_create` (or `jobs_create` for a carousel or clip) and show the draft. It
    waits for their approval; publish only when they say so.
 
-Posting is free on every plan (10 posts a day). Media tools spend credits at the cost each states.
+Scheduling their own posts is free on every plan, within its daily limit. Media tools spend credits at the cost each states.
