@@ -11,5 +11,35 @@
   "homepage": "https://shapelessai.com",
   "repository": "https://github.com/FirstClassTree/shapelessai",
   "license": "MIT",
-  "keywords": ["shapeless", "shapelessai", "social media", "mcp", "linkedin", "instagram", "tiktok", "youtube"]
+  "keywords": [
+    "shapeless",
+    "shapelessai",
+    "social media",
+    "mcp",
+    "linkedin",
+    "instagram",
+    "tiktok",
+    "youtube"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ShapelessAI",
+        "shortDescription": "Post to LinkedIn, X and more",
+        "longDescription": "ShapelessAI drives your social accounts from ChatGPT. Connect LinkedIn, X, Instagram, TikTok, YouTube, Facebook, Threads or Bluesky once in ShapelessAI, then ask in plain words: research a topic, draft a post, render a carousel or clip, schedule it, publish it. Every publish needs your approval. Runs on your own ShapelessAI account.",
+        "developerName": "ShapelessAI",
+        "category": "Productivity",
+        "websiteURL": "https://shapelessai.com",
+        "supportURL": "https://shapelessai.com/connect/chatgpt",
+        "privacyPolicyURL": "https://shapelessai.com/privacy",
+        "termsOfServiceURL": "https://shapelessai.com/terms",
+        "defaultPrompt": [
+          "ShapelessAI, connect my LinkedIn and write this week's posts in my voice.",
+          "ShapelessAI, turn my latest blog post into a LinkedIn post and an X thread.",
+          "ShapelessAI, what is trending in my niche today? Draft a post on it."
+        ]
+      },
+      "onboardingSkill": "./skills/get-started/SKILL.md"
+    }
+  }
 }
