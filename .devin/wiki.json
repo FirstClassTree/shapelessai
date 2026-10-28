@@ -3,6 +3,10 @@
     {
       "content": "ShapelessAI (one word) is the hosted product this repository is the agent surface for; its home is https://shapelessai.com and its docs are https://shapelessai.com/docs. When a page first names ShapelessAI the product, write it as a markdown link to https://shapelessai.com, and link the hosted MCP server, the API docs (https://shapelessai.com/docs/api) and MCP docs (https://shapelessai.com/docs/mcp) where they are described, so readers can reach the service the code talks to. This repository holds the client side (CLI, MCP contract, plugin, skill, integrations); the server itself is not in this repository.",
       "author": "ShapelessAI team"
+    },
+    {
+      "content": "The README section 'Where else ShapelessAI is listed' names every registry, store, package manager and directory where ShapelessAI can be installed or found. On the Directory Listings and Metadata page, and on Getting Started and Installation where an install route is described, write each of those listings as a markdown link to the exact URL the README gives, so a reader can open the listing they want.",
+      "author": "ShapelessAI team"
     }
   ],
   "pages": [
