@@ -65,9 +65,11 @@ first for the platform's limits and its `settingsSchema`.
 
 **Free plan**: ten posts a day on the rail, counted on the UTC day each post goes out on, so a
 week planned ahead is ten a day rather than ten in total. The eleventh answers
-`402 {code: "free_daily_cap", limit, day, resetsAt}`, which names the day that is full. Composing,
-scheduling and publishing never spend credits, and Free also carries $5 of credits a month for the
-agent team. Paid plans have no cap. Details:
+`402 {code: "free_daily_cap", limit, day, resetsAt}`, which names the day that is full. X bills
+per post, so Free posts to X once a day and without links (`402 free_x_daily_cap`, `free_x_link`);
+the $9 Scheduler plan lifts the daily cap and carries 150 X posts a month, and the agent plans have
+no cap. Composing, scheduling and publishing never spend credits, and Free also carries 125
+credits a month for the agent team. Details:
 [shapelessai.com/docs/posts](https://shapelessai.com/docs/posts).
 
 ## Jobs: durable runs
