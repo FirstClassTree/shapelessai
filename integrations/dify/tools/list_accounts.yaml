@@ -1,0 +1,13 @@
+identity:
+  name: list_accounts
+  author: shapelessai
+  label:
+    en_US: List accounts
+description:
+  human:
+    en_US: List the social accounts you can post to through ShapelessAI.
+  llm: List the social media accounts connected to ShapelessAI that can be posted to. Returns each account's id, platform and handle. Call this first to get the account_id for create_post.
+parameters: []
+extra:
+  python:
+    source: tools/list_accounts.py

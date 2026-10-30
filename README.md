@@ -65,9 +65,11 @@ first for the platform's limits and its `settingsSchema`.
 
 **Free plan**: ten posts a day on the rail, counted on the UTC day each post goes out on, so a
 week planned ahead is ten a day rather than ten in total. The eleventh answers
-`402 {code: "free_daily_cap", limit, day, resetsAt}`, which names the day that is full. Composing,
-scheduling and publishing never spend credits, and Free also carries $5 of credits a month for the
-agent team. Paid plans have no cap. Details:
+`402 {code: "free_daily_cap", limit, day, resetsAt}`, which names the day that is full. X bills
+per post, so Free posts to X once a day and without links (`402 free_x_daily_cap`, `free_x_link`);
+the $9 Scheduler plan lifts the daily cap and carries 150 X posts a month, and the agent plans have
+no cap. Composing, scheduling and publishing never spend credits, and Free also carries 125
+credits a month for the agent team. Details:
 [shapelessai.com/docs/posts](https://shapelessai.com/docs/posts).
 
 ## Jobs: durable runs
@@ -242,13 +244,35 @@ The same server and skill, installable from the registry your client already rea
 - MCP: [Official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/com.shapelessai%2Fshapeless/versions/latest) (`com.shapelessai/shapeless`),
   [Smithery](https://smithery.ai/servers/shapelessai/shapeless),
   [Glama](https://glama.ai/mcp/connectors/com.shapelessai/shapeless),
-  [LobeHub](https://lobehub.com/mcp/firstclasstree-shapelessai)
-- Plugins and skills: [cursor.directory](https://cursor.directory/plugins/shapeless),
+  [LobeHub](https://lobehub.com/mcp/firstclasstree-shapelessai),
+  [ModelScope](https://www.modelscope.cn/mcp/servers/shapelessai/shapelessai)
+- Apps, plugins and skills: [ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6aa791a8667c8191a6087d1aeb462f9e),
+  [cursor.directory](https://cursor.directory/plugins/shapeless),
   [ClawHub](https://clawhub.ai/firstclasstree/skills/shapeless),
-  [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapelessai)
+  [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapelessai),
+  [claude-plugins.dev](https://claude-plugins.dev/skills/@FirstClassTree/shapelessai/shapelessai),
+  [ModelScope skills](https://www.modelscope.cn/skills/shapelessai/shapelessai),
+  [360 SkillHub](https://skillhub.360.com/skills/360U3659939903/shapelessai)
+- Packages: [Docker Hub](https://hub.docker.com/r/shapelessai/shapelessai),
+  [conda](https://anaconda.org/shapelessai/shapelessai),
+  [Snap](https://snapcraft.io/shapelessai),
+  [Chocolatey](https://community.chocolatey.org/packages/shapelessai),
+  [npm](https://www.npmjs.com/package/shapelessai) (AI SDK tools: [shapelessai-ai-sdk](https://app.unpkg.com/shapelessai-ai-sdk@0.1.0)),
+  [Rust crate](https://docs.rs/crate/shapelessai/latest),
+  [Ruby gem](https://rubygems.org/gems/shapelessai),
+  [Swift Package Index](https://swiftpackageindex.com/FirstClassTree/shapelessai-swift),
+  [CocoaPods](https://cocoapods.org/pods/ShapelessAI)
+- Workflow platforms and API hubs: [Dify Marketplace](https://marketplace.dify.ai/plugin/shapelessai/shapelessai),
+  [Open WebUI](https://openwebui.com/posts/shapelessai_schedule_and_publish_social_posts_from_27f16474),
+  [Postman](https://www.postman.com/growthshapelessai-4790137),
+  [RapidAPI](https://rapidapi.com/shapelessai/api/shapelessai),
+  [APIs.io](https://apis.io/providers/shapelessai/)
+- Docs for coding agents: [Context7](https://context7.com/websites/shapelessai)
 - Product directories: [Twelve Tools](https://twelve.tools/shapelessai),
   [Product Watch](https://productwatch.io/products/shapelessai),
-  [Lifto](https://liftoapp.com/product/shapelessai)
+  [Lifto](https://liftoapp.com/product/shapelessai),
+  [Dynamite AI](https://dynamite-ai.com/tools/shapelessai),
+  [LibHunt](https://www.libhunt.com/r/shapelessai)
 
 ## The API
 

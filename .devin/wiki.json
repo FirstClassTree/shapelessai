@@ -1,0 +1,137 @@
+{
+  "repo_notes": [
+    {
+      "content": "ShapelessAI (one word) is the hosted product this repository is the agent surface for; its home is https://shapelessai.com and its docs are https://shapelessai.com/docs. When a page first names ShapelessAI the product, write it as a markdown link to https://shapelessai.com, and link the hosted MCP server, the API docs (https://shapelessai.com/docs/api) and MCP docs (https://shapelessai.com/docs/mcp) where they are described, so readers can reach the service the code talks to. This repository holds the client side (CLI, MCP contract, plugin, skill, integrations); the server itself is not in this repository.",
+      "author": "ShapelessAI team"
+    },
+    {
+      "content": "The README section 'Where else ShapelessAI is listed' names every registry, store, package manager and directory where ShapelessAI can be installed or found. On the Directory Listings and Metadata page, and on Getting Started and Installation where an install route is described, write each of those listings as a markdown link to the exact URL the README gives, so a reader can open the listing they want.",
+      "author": "ShapelessAI team"
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "What ShapelessAI is (an AI content team for founders at https://shapelessai.com) and what this repository ships: CLI, MCP server contract, Claude Code plugin, skill and integrations"
+    },
+    {
+      "title": "Repository Layout and Conventions",
+      "purpose": "Top-level folders, naming and versioning conventions",
+      "parent": "Overview"
+    },
+    {
+      "title": "Getting Started and Installation",
+      "purpose": "Installing the CLI, adding the hosted MCP server https://shapelessai.com/mcp, signing in, API keys",
+      "parent": "Overview"
+    },
+    {
+      "title": "ShapelessAI Platform Concepts",
+      "purpose": "The hosted product concepts the tools expose"
+    },
+    {
+      "title": "Posts, Queue and Publishing",
+      "purpose": "Posts, the per-account queue, scheduling and publishing to connected social accounts",
+      "parent": "ShapelessAI Platform Concepts"
+    },
+    {
+      "title": "Jobs and Durable Runs",
+      "purpose": "Durable content jobs and how agents continue, stop and read them",
+      "parent": "ShapelessAI Platform Concepts"
+    },
+    {
+      "title": "Brand Memory, Assets and Agents",
+      "purpose": "Brand Memory, uploaded assets and standing agents",
+      "parent": "ShapelessAI Platform Concepts"
+    },
+    {
+      "title": "MCP Server and Agent Surface",
+      "purpose": "The MCP server contract and how agents use it"
+    },
+    {
+      "title": "MCP Transport and Authentication",
+      "purpose": "Streamable HTTP transport, OAuth 2.1 with dynamic client registration, API key as Bearer",
+      "parent": "MCP Server and Agent Surface"
+    },
+    {
+      "title": "MCP Tool Catalog and Studio Tools",
+      "purpose": "The tool catalog, annotations and studio tools",
+      "parent": "MCP Server and Agent Surface"
+    },
+    {
+      "title": "CLI Reference",
+      "purpose": "The shapeless CLI commands and config",
+      "parent": "MCP Server and Agent Surface"
+    },
+    {
+      "title": "Claude Plugin and Marketplace",
+      "purpose": "The Claude Code plugin and its marketplace"
+    },
+    {
+      "title": "Plugin Manifests and Marketplace Registry",
+      "purpose": "plugin.json, .mcp.json and marketplace.json",
+      "parent": "Claude Plugin and Marketplace"
+    },
+    {
+      "title": "The shapelessai Skill",
+      "purpose": "The agent skill and what it tells an agent",
+      "parent": "Claude Plugin and Marketplace"
+    },
+    {
+      "title": "Integrations",
+      "purpose": "Framework and platform integrations in integrations/"
+    },
+    {
+      "title": "Vercel AI SDK Integration",
+      "purpose": "The shapelessai-ai-sdk package",
+      "parent": "Integrations"
+    },
+    {
+      "title": "AI SDK Tool Definitions",
+      "purpose": "createPost, listAccounts, listPosts tool definitions",
+      "parent": "Vercel AI SDK Integration"
+    },
+    {
+      "title": "AI SDK Tests",
+      "purpose": "How the AI SDK package is tested",
+      "parent": "Vercel AI SDK Integration"
+    },
+    {
+      "title": "Dify Plugin Integration",
+      "purpose": "The Dify tool plugin",
+      "parent": "Integrations"
+    },
+    {
+      "title": "Dify Provider and Credentials",
+      "purpose": "API key credential and its validation",
+      "parent": "Dify Plugin Integration"
+    },
+    {
+      "title": "Dify Tools and HTTP Client",
+      "purpose": "The Dify tools and their HTTP client",
+      "parent": "Dify Plugin Integration"
+    },
+    {
+      "title": "Dify Live Tests",
+      "purpose": "Live tests of the Dify plugin",
+      "parent": "Dify Plugin Integration"
+    },
+    {
+      "title": "Documentation Strategy",
+      "purpose": "Where the documentation lives and how it is published"
+    },
+    {
+      "title": "Hosted Docs and Redirect Stubs",
+      "purpose": "Docs hosted on https://shapelessai.com/docs and the stubs in this repo",
+      "parent": "Documentation Strategy"
+    },
+    {
+      "title": "Directory Listings and Metadata",
+      "purpose": "Where ShapelessAI is listed and the metadata those listings read",
+      "parent": "Documentation Strategy"
+    },
+    {
+      "title": "Glossary",
+      "purpose": "Terms used across the repository"
+    }
+  ]
+}

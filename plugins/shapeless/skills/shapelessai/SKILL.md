@@ -32,7 +32,7 @@ Straight to the page you need: [posts](https://shapelessai.com/docs/posts.md) ·
 Call `me` to confirm the credential works and see the plan and credit balance. If it fails, the user
 signs in over OAuth: run `/mcp`, pick shapeless, choose Authenticate, and allow in the browser tab.
 The stdio fallback (`npx shapelessai mcp`) needs a key instead: minted at
-https://shapelessai.com/studio/api-keys, then `shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
+<https://shapelessai.com/studio/api-keys>, then `shapeless login` or `export SHAPELESS_API_KEY=slk_...`.
 
 **No `me` tool at all?** Then this skill arrived without its server (a ClawHub or skills.sh
 install carries only this file). The server is hosted at `https://shapelessai.com/mcp`
@@ -52,7 +52,7 @@ codex mcp add shapeless --url https://shapelessai.com/mcp && codex mcp login sha
 ```
 
 Every other host (Hermes, Cursor, Gemini CLI, ChatGPT, Claude, Grok, Perplexity) has its steps at
-https://shapelessai.com/connect. Tell the user which command you ran and that one sign-in is
+<https://shapelessai.com/connect>. Tell the user which command you ran and that one sign-in is
 theirs to do; the tools appear once the host reloads its servers (the next turn or session).
 
 ## The shape of the work
@@ -97,9 +97,15 @@ theirs to do; the tools appear once the host reloads its servers (the next turn 
   same as creating one. A post that failed keeps its slot: retry it with `posts_publish` on the
   same id, which takes no new slot, never by creating it again. The eleventh answers
   `402 {code: "free_daily_cap", limit, day, resetsAt}` naming the day that is full: move the post
-  to a day with room, or tell the user their account is on Free. Paid plans have no cap.
-  Composing, scheduling and publishing never spend credits; Free also carries $5 of credits a
-  month for the generative work.
+  to a day with room, or tell the user their account is on Free.
+  **X is the exception**, because X bills per post: Free posts to X once a day (a first comment
+  counts) and never with a link, in the post or its first comment. A second X post that day answers
+  `402 free_x_daily_cap`, a link answers `402 free_x_link`; take the link out or move the post to
+  the next day. The Scheduler plan lifts the daily cap and carries 150 X posts a month (a post with
+  a link counts as 10, `402 x_monthly_cap` when they run out); the agent plans (Spark, Growth,
+  Studio) have no cap at all. Every 402 carries `resetsAt` and a checkout link for the human.
+  Composing, scheduling and publishing never spend credits; Free also carries 125 credits a month
+  for the generative work.
 - **Studio tools** are the studio agent's own tools, each its own MCP tool under the same name,
   for one direct step when a whole job is more than you need: `generate_image`,
   `generate_footage`, `edit_footage`, `render_carousel`, `render_thumbnail`, `speak`,
@@ -135,5 +141,5 @@ theirs to do; the tools appear once the host reloads its servers (the next turn 
 - Read `posts_create`'s rules before writing the post, not after a `422`: the character limit and
   the media rules are in `platforms_list`, and a draft written past the limit is a rewrite.
 
-The full contract - routes, scopes, refusal codes - is at https://shapelessai.com/docs/api
-(Markdown at https://shapelessai.com/docs/api.md).
+The full contract - routes, scopes, refusal codes - is at <https://shapelessai.com/docs/api>
+(Markdown at <https://shapelessai.com/docs/api.md>).

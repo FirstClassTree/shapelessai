@@ -1,0 +1,24 @@
+{
+  "name": "shapelessai-ai-sdk",
+  "version": "0.1.1",
+  "description": "ShapelessAI tools for the Vercel AI SDK: list connected social accounts, schedule or publish posts, read post status.",
+  "license": "MIT",
+  "author": "ShapelessAI <hello@shapelessai.com> (https://shapelessai.com)",
+  "homepage": "https://shapelessai.com/docs/ai-sdk",
+  "repository": { "type": "git", "url": "git+https://github.com/FirstClassTree/shapelessai.git", "directory": "integrations/ai-sdk" },
+  "bugs": "https://github.com/FirstClassTree/shapelessai/issues",
+  "keywords": ["ai-sdk", "vercel-ai", "tools", "social-media", "scheduler", "shapelessai", "agents"],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "peerDependencies": { "ai": ">=6", "zod": "^3.25.0 || ^4" },
+  "devDependencies": { "ai": "^7.0.140", "zod": "^4.6.7", "typescript": "^5.9.0", "@types/node": "^22" }
+}
