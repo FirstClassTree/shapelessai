@@ -272,7 +272,10 @@ The same server and skill, installable from the registry your client already rea
   [Product Watch](https://productwatch.io/products/shapelessai),
   [Lifto](https://liftoapp.com/product/shapelessai),
   [Dynamite AI](https://dynamite-ai.com/tools/shapelessai),
-  [LibHunt](https://www.libhunt.com/r/shapelessai)
+  [LibHunt](https://www.libhunt.com/r/shapelessai),
+  [Startup Fame](https://startupfa.me/s/shapelessai.com-592),
+  [Saaspa.ge](https://www.saaspa.ge/product/cmul6h90e0004l604ffmy6zwp)
+- Company: [The Org](https://theorg.com/org/shapelessai)
 
 ## The API
 
