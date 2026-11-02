@@ -161,8 +161,8 @@ carries a title and annotations - read-only tools run freely, anything that publ
 overwrites is flagged destructive so a host asks you first - and each description names the scope
 it needs.
 
-Beyond the account tools, every tool our own studio agent holds is its own MCP tool too, 32 of
-them: `generate_image`, `generate_footage`, `edit_footage`, `render_carousel`, `speak`,
+Beyond the account tools, every tool our own studio agent holds is its own MCP tool too:
+`generate_image`, `generate_footage`, `edit_footage`, `render_carousel`, `speak`,
 `caption_file`, `web_search`, `x_pulse` and the rest. Each answers the files it made as media keys
 you can publish with `posts_create`. The table with what each one costs is at
 [shapelessai.com/docs/mcp](https://shapelessai.com/docs/mcp#studio-tools); `tools_list` reads it
