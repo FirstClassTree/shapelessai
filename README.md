@@ -242,7 +242,6 @@ Then run `/mcp`, pick shapeless and choose Authenticate - a browser tab signs yo
 The same server and skill, installable from the registry your client already reads:
 
 - MCP: [Official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers/com.shapelessai%2Fshapeless/versions/latest) (`com.shapelessai/shapeless`),
-  [Smithery](https://smithery.ai/servers/shapelessai/shapeless),
   [Glama](https://glama.ai/mcp/connectors/com.shapelessai/shapeless),
   [LobeHub](https://lobehub.com/mcp/firstclasstree-shapelessai),
   [ModelScope](https://www.modelscope.cn/mcp/servers/shapelessai/shapelessai)
