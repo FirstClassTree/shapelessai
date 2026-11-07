@@ -24,6 +24,14 @@ npm i -g shapelessai        # keeps `shapeless` on your PATH
 
 Node 20 or newer.
 
+### Claude's directory
+
+The connector Anthropic lists is `https://shapelessai.com/mcp/social`, the same account server
+without the media-generation tools (Anthropic's Software Directory Policy 4.B lists no software that
+generates images, video or audio with a model); its plugin bundle is `plugins/shapeless-social`.
+`plugins/shapeless` and `https://shapelessai.com/mcp` stay the full server, for this marketplace and
+every other host. Details: https://shapelessai.com/docs/mcp.
+
 ## Authenticate
 
 Mint a key in the studio: **Settings -> API keys** (`/studio/api-keys`). Give it

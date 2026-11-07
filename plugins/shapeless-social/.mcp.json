@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "shapeless": {
+      "type": "http",
+      "url": "https://shapelessai.com/mcp/social"
+    }
+  }
+}
