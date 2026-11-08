@@ -14,7 +14,8 @@ them to a first post now, in this conversation.
    (or `connections_link`), never a settings or Accounts page, and wait until they say it is done.
 3. An account connected: name it and ask one question, what this week's post should be about (their
    product, a lesson, a launch). Offer an example if they hesitate.
-4. Draft it with `posts_create` (or `jobs_create` for a carousel or clip) and show the draft. It
-   waits for their approval; publish only when they say so.
+4. Write the post and show it to them first (or `jobs_create` for a carousel or clip, whose posts
+   wait as proposals for `posts_approve`). Call `posts_create` only after they say go: it puts the
+   post on their real account, now or at `scheduledAt`.
 
 Scheduling their own posts is free on every plan, within its daily limit. Media tools spend credits at the cost each states.
