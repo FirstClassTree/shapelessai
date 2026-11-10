@@ -230,7 +230,7 @@ Without the env var the server uses the key stored by `shapeless login`.
 skill from this repo. Gemini CLI reads `gemini-extension.json` at the root:
 
 ```
-gemini extensions install https://github.com/FirstClassTree/shapelessai
+gemini extensions install https://github.com/ShapelessAI/shapelessai
 ```
 
 ## Claude Code plugin
@@ -239,7 +239,7 @@ This repo is also a plugin marketplace. The `shapeless` plugin wires up the host
 ships a skill that teaches Claude the ropes - scopes, the post queue, when to touch Brand Memory:
 
 ```
-/plugin marketplace add FirstClassTree/shapelessai
+/plugin marketplace add ShapelessAI/shapelessai
 /plugin install shapeless@shapeless
 ```
 
