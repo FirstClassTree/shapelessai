@@ -27,5 +27,5 @@ A scheduled post can still be edited or cancelled in the ShapelessAI Studio or w
 
 - API reference: https://shapelessai.com/docs/api
 - MCP server, for agents that speak MCP: https://shapelessai.com/docs/mcp
-- Source: https://github.com/FirstClassTree/shapelessai/tree/main/integrations/dify
+- Source: https://github.com/ShapelessAI/shapelessai/tree/main/integrations/dify
 - Support: hello@shapelessai.com
