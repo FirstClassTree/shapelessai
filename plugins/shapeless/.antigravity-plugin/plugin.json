@@ -1,0 +1,21 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "shapeless",
+  "displayName": "ShapelessAI",
+  "version": "1.0.4",
+  "description": "An AI social media team: draft, design, render and publish posts to LinkedIn, X, Instagram, TikTok, YouTube and more, with your approval.",
+  "logo": "assets/icon.png",
+  "suggestedPrompts": [
+    "Connect my LinkedIn and draft this week's posts in my voice",
+    "Turn the README of this repo into a launch post for LinkedIn and X",
+    "What is trending in my niche today? Draft a post on it"
+  ],
+  "author": {
+    "name": "ShapelessAI",
+    "url": "https://shapelessai.com"
+  },
+  "homepage": "https://shapelessai.com",
+  "repository": "https://github.com/ShapelessAI/shapelessai",
+  "license": "MIT",
+  "keywords": ["shapelessai", "social media", "mcp", "linkedin", "x", "instagram", "tiktok", "youtube"]
+}
