@@ -9,14 +9,14 @@ npm install shapelessai-ai-sdk
 Make an API key at [shapelessai.com/docs/api](https://shapelessai.com/docs/api) and set `SHAPELESSAI_API_KEY`.
 
 ```ts
-import { generateText, isStepCount } from 'ai';
+import { generateText, stepCountIs } from 'ai';
 import { shapelessaiTools } from 'shapelessai-ai-sdk';
 
 const { text } = await generateText({
   model: 'openai/gpt-5-mini',
   prompt: 'Schedule "We just shipped dark mode" to my LinkedIn in the next free slot.',
   tools: shapelessaiTools(),
-  stopWhen: isStepCount(5),
+  stopWhen: stepCountIs(5),
 });
 ```
 
