@@ -257,7 +257,6 @@ The same server and skill, installable from the registry your client already rea
   [cursor.directory](https://cursor.directory/plugins/shapeless),
   [ClawHub](https://clawhub.ai/firstclasstree/skills/shapeless),
   [skills.sh](https://www.skills.sh/firstclasstree/shapelessai/shapelessai),
-  [claude-plugins.dev](https://claude-plugins.dev/skills/@FirstClassTree/shapelessai/shapelessai),
   [ModelScope skills](https://www.modelscope.cn/skills/shapelessai/shapelessai),
   [360 SkillHub](https://skillhub.360.com/skills/360U3659939903/shapelessai)
 - Packages: [Docker Hub](https://hub.docker.com/r/shapelessai/shapelessai),
